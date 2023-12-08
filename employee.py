@@ -1,6 +1,3 @@
-"""Employee pay calculator."""
-"""ENTER YOUR SOLUTION HERE!"""
-
 class Employee:
     def __init__(self, name, monthly, contract, commission, bonus_commission):
         self.name = name
@@ -10,6 +7,26 @@ class Employee:
         self.bonus_commission = bonus_commission
         self.pay = 0
 
+
+    def __str__(self):
+        string = f'{self.name} works on a '
+        if self.monthly != None:
+            string += f'monthly salary of {self.monthly}'
+        else:
+            string += f'contract of {self.contract[1]} hours at {self.contract[0]}/hour'
+
+        if self.commission != None:
+            string += f' and receives a commission for {self.commission[0]} contract(s) at {self.commission[1]}/contract'
+
+        if self.bonus_commission != None:
+            string += f' and receives a bonus commission of {self.bonus_commission}'
+
+        string += f'. Their total pay is {self.pay}.'
+        return string
+    
+    def get_pay(self):
+        return self.pay
+    
     def calc_pay(self):
         if self.monthly != None:
             self.pay = self.pay + self.monthly
@@ -22,25 +39,6 @@ class Employee:
             self.pay = self.pay + self.bonus_commission
         else:
             pass
-
-    def get_pay(self):
-        return self.pay
-
-    def __str__(self):
-        return_str = f'{self.name} works on a '
-        if self.monthly != None:
-            return_str += f'monthly salary of {self.monthly}'
-        else:
-            return_str += f'contract of {self.contract[1]} hours at {self.contract[0]}/hour'
-
-        if self.commission != None:
-            return_str += f' and receives a commission for {self.commission[0]} contract(s) at {self.commission[1]}/contract'
-
-        if self.bonus_commission != None:
-            return_str += f' and receives a bonus commission of {self.bonus_commission}'
-
-        return_str += f'. Their total pay is {self.pay}.'
-        return return_str
         
 
 
